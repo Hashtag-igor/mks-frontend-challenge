@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { IButton } from '../../types/IButton';
-import { addToCart } from '../../redux/actions/cartActions';
-import { BagIcon, ButtonComponent } from "../../styles/ButtonStyles"
+import { BagIcon, ButtonComponent } from "../../styles/ButtonStyles";
+import { addToCart } from "../../redux/actions/cartActions";
 
 const Button: React.FC<IButton> = ({ product }) => {
   const dispatch = useDispatch();
