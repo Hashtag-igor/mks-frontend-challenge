@@ -85,15 +85,15 @@ const Cart: React.FC<CartProps> = ({ toggleCart }) => {
                   </CartIMGContainer>
                   <CartName>{item.name}</CartName>
                   <CartQuantyContainer>
-                    <LessButton onClick={() => decreaseQuantity(item.id)}>-</LessButton>
+                    <LessButton onClick={() => decreaseQuantity(String(item.id))}>-</LessButton>
                     <QuantyProduct>{itemQuantities[item.id] || 0}</QuantyProduct>
-                    <MoreButton onClick={() => increaseQuantity(item.id)}>+</MoreButton>
+                    <MoreButton onClick={() => increaseQuantity(String(item.id))}>+</MoreButton>
                   </CartQuantyContainer>
                   <ProductPrice>
                     R${(parseFloat(item.price.replace(',', '.')) * (itemQuantities[item.id] || 1)).toFixed(2).replace(/\.?0*$/, '')}
                   </ProductPrice>
                   
-                  <DeleteProduct onClick={() => removeItem(item.id)}>
+                  <DeleteProduct onClick={() => removeItem(String(item.id))}>
                     <DeleteIcon />
                   </DeleteProduct>
                 </CartCardWrapper>
