@@ -1,6 +1,8 @@
-import { ICart } from './ICart';
+import { ICard } from "./ICard";
 
 export interface IButton {
-  product: ICart;
-  addToCart: (product: ICart) => void;
+  product: ICard;
+  addToCart?: (props: any) => void;
 }
+
+
