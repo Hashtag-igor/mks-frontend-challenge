@@ -1,13 +1,29 @@
-// components/Header/Header.tsx
+// Header.tsx
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Cart from '../Cart/Cart';
-import { CartButton, HeaderContainer, HeaderContent, LogoContainer, Title, CartIcon, SecondTitle } from "../../styles/HeaderStyles"
+import { ICart } from '@/types/ICart';
+import { RootState } from '@/redux/store';
+import { CartButton, HeaderContainer, HeaderContent, LogoContainer, Title, CartIcon, SecondTitle, QuantyProducts } from '../../styles/HeaderStyles';
+import { addToCart, removeCartItem, updateCartItemCount } from '../../redux/actions/cartActions';
 
 const Header: React.FC = () => {
   const [showCart, setShowCart] = useState(false);
+  const itemCount = useSelector((state: RootState) => state.cart.itemCount);
+  const dispatch = useDispatch();
 
   const toggleCart = () => {
     setShowCart(!showCart);
+  };
+
+  const handleAddToCart = (product: ICart) => {
+    dispatch(addToCart(product));
+    dispatch(updateCartItemCount());
+  };  
+
+  const handleRemoveFromCart = (productId: string) => {
+    dispatch(removeCartItem(productId));
+    dispatch(updateCartItemCount());
   };
 
   return (
@@ -18,7 +34,8 @@ const Header: React.FC = () => {
           <SecondTitle>Sistemas</SecondTitle>
         </LogoContainer>
         <CartButton onClick={toggleCart}>
-          <CartIcon aria-label="carrinho"/>
+          <CartIcon aria-label="carrinho" />
+          <QuantyProducts>{itemCount}</QuantyProducts>
         </CartButton>
         {showCart && <Cart toggleCart={toggleCart} />}
       </HeaderContent>

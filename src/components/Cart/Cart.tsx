@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ICart } from '../../types/ICart';
 import { RootState } from '../../redux/store';
-import { updateCartItem, removeCartItem } from '../../redux/actions/cartActions';
-import { CartBuyButton, CartBuyContainer, CartCardContainer, CartCardWrapper, CartContainer, CartHeaderContainer, CartHeaderTitle, CartIMG, CartIMGContainer, 
+import { updateCartItem, removeCartItem,updateCartItemCount } from '../../redux/actions/cartActions';
+import { CartBuyButton, CartBuyContainer, CartCardContainer, CartCardWrapper, CartContainer, CartHeaderContainer, CartHeaderTitle, CartHeaderTitleContainer, CartIMG, CartIMGContainer, 
+         CartIconTitle, 
          CartMapContainer, CartName, CartPriceContainer, CartQuantyContainer, CartTotal, CartTotalPrice, CartWrapper, DeleteIcon, DeleteIconPage, DeleteProduct, LessButton, 
          MoreButton, ProductPrice, QuantyProduct } from "../../styles/CartStyles";
 
@@ -59,8 +60,17 @@ const Cart: React.FC<CartProps> = ({ toggleCart }) => {
         [itemId]: prevQuantities[itemId] - 1,
       }));
       dispatch(updateCartItem(itemId, itemQuantities[itemId] - 1));
+    } else {
+      dispatch(removeCartItem(itemId));
+      dispatch(updateCartItemCount());
+  
+      setItemQuantities((prevQuantities) => ({
+        ...prevQuantities,
+        [itemId]: 0, 
+      }));
     }
   };
+  
 
   const removeItem = (itemId: string) => {
     dispatch(removeCartItem(itemId));
@@ -70,7 +80,10 @@ const Cart: React.FC<CartProps> = ({ toggleCart }) => {
   return (
     <CartContainer>
       <CartHeaderContainer>
-        <CartHeaderTitle>Carrinho de Compras</CartHeaderTitle>
+        <CartHeaderTitleContainer>
+          <CartIconTitle />
+          <CartHeaderTitle>Carrinho</CartHeaderTitle>
+        </CartHeaderTitleContainer>
         <DeleteIconPage onClick={closeCart}></DeleteIconPage>
       </CartHeaderContainer>
 
