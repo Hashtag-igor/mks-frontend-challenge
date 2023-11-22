@@ -1,3 +1,4 @@
+// cartActions.tsx
 import { ICart } from '../../types/ICart';
 
 export const addToCart = (product: ICart) => ({
@@ -5,7 +6,7 @@ export const addToCart = (product: ICart) => ({
   payload: product,
 });
 
-export const removeFromCart = (productId: number) => ({
+export const removeFromCart = (productId: string) => ({
   type: 'REMOVE_FROM_CART',
   payload: productId,
 });
@@ -18,13 +19,13 @@ export const updateCartItem = (productId: string, quantity: number) => ({
   },
 });
 
-export const removeCartItem = (itemId: string) => {
-  return {
-    type: 'REMOVE_CART_ITEM',
-    payload: {
-      itemId,
-    },
-  };
-};
+export const removeCartItem = (itemId: string) => ({
+  type: 'REMOVE_CART_ITEM',
+  payload: {
+    itemId,
+  },
+});
 
-
+export const updateCartItemCount = () => ({
+  type: 'UPDATE_CART_ITEM_COUNT',
+});
