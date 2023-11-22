@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ICart } from '../../types/ICart';
 import { RootState } from '../../redux/store';
 import { updateCartItem, removeCartItem } from '../../redux/actions/cartActions';
-import { CartBuyButton, CartBuyContainer, CartCardContainer, CartCardWrapper, CartContainer, CartHeaderContainer, CartHeaderTitle, CartIMG, CartIMGContainer, 
+import { CartBuyButton, CartBuyContainer, CartCardContainer, CartCardWrapper, CartContainer, CartHeaderContainer, CartHeaderTitle, CartHeaderTitleContainer, CartIMG, CartIMGContainer, 
+         CartIconTitle, 
          CartMapContainer, CartName, CartPriceContainer, CartQuantyContainer, CartTotal, CartTotalPrice, CartWrapper, DeleteIcon, DeleteIconPage, DeleteProduct, LessButton, 
          MoreButton, ProductPrice, QuantyProduct } from "../../styles/CartStyles";
 
@@ -70,7 +71,10 @@ const Cart: React.FC<CartProps> = ({ toggleCart }) => {
   return (
     <CartContainer>
       <CartHeaderContainer>
-        <CartHeaderTitle>Carrinho de Compras</CartHeaderTitle>
+        <CartHeaderTitleContainer>
+          <CartIconTitle />
+          <CartHeaderTitle>Carrinho</CartHeaderTitle>
+        </CartHeaderTitleContainer>
         <DeleteIconPage onClick={closeCart}></DeleteIconPage>
       </CartHeaderContainer>
 
