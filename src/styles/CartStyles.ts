@@ -198,6 +198,7 @@ export const LessButton = styled.button`
   background: white;
   border: none;
   font-size: 16px;
+  cursor: pointer;
 
   @media screen and (max-width: 880px) {
     font-size: 22px;
@@ -208,6 +209,7 @@ export const QuantyProduct = styled.div`
   background: white;
   border: none;
   font-size: 16px;
+  cursor: pointer;
 
   @media screen and (max-width: 880px) {
     font-size: 20px;
@@ -218,6 +220,7 @@ export const MoreButton = styled.button`
   padding: 3px 12px;
   background: white;
   font-size: 16px;
+  cursor: pointer;
 
   @media screen and (max-width: 880px) {
     font-size: 22px;

@@ -11,6 +11,8 @@ export const ButtonComponent = styled.button`
     padding: 10px 0;
     font-weight: bolder;
     font-size: 15px;
+
+    cursor: pointer;
 `
 export const BagIcon = styled(FiShoppingBag)`
     margin-right: 3px;
