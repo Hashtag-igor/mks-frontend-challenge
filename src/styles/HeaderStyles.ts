@@ -42,5 +42,5 @@ export const CartButton = styled.button`
 `;
 
 export const CartIcon = styled(FaCartShopping)`
-
+  font-size: 18px;
 `
